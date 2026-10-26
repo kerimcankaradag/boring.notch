@@ -13,13 +13,18 @@ struct BoringHeader: View {
     @ObservedObject var batteryModel = BatteryStatusViewModel.shared
     @ObservedObject var coordinator = BoringViewCoordinator.shared
     @StateObject var tvm = ShelfStateViewModel.shared
+    @AppStorage("personalNotchLabel") private var personalNotchLabel = ""
     var body: some View {
         HStack(spacing: 0) {
             HStack {
                 if (!tvm.isEmpty || coordinator.alwaysShowTabs) && Defaults[.boringShelf] {
                     TabSelectionView()
-                } else if vm.notchState == .open {
-                    EmptyView()
+                } else if vm.notchState == .open && !personalNotchLabel.isEmpty {
+                    Text(personalNotchLabel)
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .foregroundStyle(.white.opacity(0.8))
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
