@@ -16110,6 +16110,16 @@
         }
       }
     },
+    "Personal notch label" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kişisel çentik etiketi"
+          }
+        }
+      }
+    },
     "Pick a Color" : {
       "localizations" : {
         "ar" : {
@@ -20208,6 +20218,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Show sneak peek on playback changes"
+          }
+        }
+      }
+    },
+    "Shown on the left when the notch is open and tabs are hidden. Leave blank to disable." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çentik açıkken ve sekmeler gizliyken solda gösterilir. Kapatmak için boş bırakın."
           }
         }
       }
