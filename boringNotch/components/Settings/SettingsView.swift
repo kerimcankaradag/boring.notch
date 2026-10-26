@@ -1158,6 +1158,7 @@ struct Shelf: View {
 //}
 
 struct Appearance: View {
+    @AppStorage("personalNotchLabel") private var personalNotchLabel = ""
     @ObservedObject var coordinator = BoringViewCoordinator.shared
     @Default(.mirrorShape) var mirrorShape
     @Default(.sliderColor) var sliderColor
@@ -1176,6 +1177,13 @@ struct Appearance: View {
         Form {
             Section {
                 Toggle("Always show tabs", isOn: $coordinator.alwaysShowTabs)
+                TextField("Personal notch label", text: $personalNotchLabel)
+                    .onChange(of: personalNotchLabel) {
+                        personalNotchLabel = String(personalNotchLabel.prefix(20))
+                    }
+                Text("Shown on the left when the notch is open and tabs are hidden. Leave blank to disable.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 Defaults.Toggle(key: .settingsIconInNotch) {
                     Text("Show settings icon in notch")
                 }
